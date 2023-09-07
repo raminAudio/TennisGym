@@ -21,13 +21,12 @@ WEIGHT_DECAY = 0.00001   # L2 weight decay
 TIME = 64       # Train network every TIME time step
 TRAIN_NUM = 128  # Train network TRAIN_NUM times 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-NUM_AGENTS = 2
 
 
 class Agent(BaseEstimator):
     """Interacts with and learns from the environment."""
     
-    def __init__(self, state_size, action_size, random_seed ):
+    def __init__(self, state_size, action_size,num_agents, random_seed ):
         """Initialize an Agent object.
         
         Params
@@ -39,7 +38,6 @@ class Agent(BaseEstimator):
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(random_seed)
-        self.num_agents = NUM_AGENTS
         # Critic Network (w/ Target Network)
         self.actor_local  = Actor(state_size, action_size, 256).to(device) 
 
@@ -63,8 +61,8 @@ class Agent(BaseEstimator):
 
         self.deep_copy(self.actor_target, self.actor_local)
         self.deep_copy(self.critic_target, self.critic_local)
-
-
+        self.num_agents = num_agents
+        
     def step(self, states, actions, rewards, next_states, dones, time_stamp):
         """Save experience in replay memory, and use random sample from buffer to learn."""
         # Save experience / reward
