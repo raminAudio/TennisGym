@@ -49,4 +49,4 @@ You can see that acheive and maintain an average score of bigger than 0.5 over 1
 
 ###  Future Work
 
-As a future reward, it would be nice to try out PPO agents instead of DDPG agents. I'm curious to see how well or worse an actor only network would work. I would also implement the priority queue that I had attempted to implement to see if it might help with stabalizing the scores.
+As for future work, it would be nice to try out PPO agents instead of DDPG agents. I'm curious to see how well or worse an actor only network would work. I would also implement the priority queue that I had attempted to implement to see if it might help with stabalizing the scores.
